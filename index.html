@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, user-scalable=no,
+        shrink-to-fit=no, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0" />
+
+    <title>Getting some data from a json API</title>
+    <link rel="stylesheet" href="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.css" />
+    <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+    <script src="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.js"></script>
+    <script src="visualize.js"></script>
+    <!-- This script, cordova.js,  is built into Evothings Viewer (i.e. you won't need to add this file to your project) The idea is to pick up a http resource, even if you're using https, which would normally create a cross-protocol violation. The HTTP plug-in from Apache Cordova allows this to be carried out, see especially this post: https://evothings.com/evothings-secured-now-serving-over-https/ -->
+    <script>
+    // Redirect console.log to Evothings Workbench, so you can see data under 'Tools'
+    if (window.hyper && window.hyper.log) { hyper.log = console.log }
+    </script>
+</head>
+
+ 
+
+<body>
+<button onclick="history.back()">Exit</button><br />
+
+<button onClick="getJSON();">Retrieve some sensor data</button>
+<div id="printHere"></div>
+
+
+</body>
+</html>
