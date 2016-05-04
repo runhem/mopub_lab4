@@ -54,18 +54,23 @@ function shallIGo(){
     var go = "Gul";
     var temp = "Medium";
     if(sensor && sensor.data){
-    if (sensor.data.c >= 800){
-        go = "Röd";
-    }
-    if(sensor.data.c <450){
-        go = "Grön";
-    }
-    if(sensor.data.t >= 30){
+        if (sensor.data.c >= 800){
+            go = "Röd";
+        }
+        if(sensor.data.c <450){
+            go = "Grön";
+        }
+        if(sensor.data.t >= 30){
             temp = "To hot";
         }
         if(sensor.data.t < 20){
             temp = "Cold";
         }
+
+    red (med, hot) -> dont
+    gul (hot) --> dont
+    grön (hot) --> dont 
+    
     }
     console.log(go);
     console.log(temp);
