@@ -51,28 +51,45 @@ function printData(){
 
 
 function shallIGo(){
-    var go = "Gul";
+    var co = "Medium";
     var temp = "Medium";
     if(sensor && sensor.data){
         if (sensor.data.c >= 800){
-            go = "Röd";
+            co = "High";
         }
         if(sensor.data.c <450){
-            go = "Grön";
+            co = "Low";
         }
         if(sensor.data.t >= 30){
-            temp = "To hot";
+            temp = "Hot";
         }
         if(sensor.data.t < 20){
             temp = "Cold";
         }
+    }
 
-    red (med, hot) -> dont
-    gul (hot) --> dont
-    grön (hot) --> dont 
-    
+    var go = "";
+    if(co == "Low" || co == "Medium"){
+        if(temp == "Cold"){
+        go = "Yes! You should definetily go.";
+        }
+        if(temp == "Medium"){
+            go = "It might be people there, but go! The dome is nice.";
+        }
+        else{
+            go = "No! Don't go!";
+        }
+    }
+    if(co == "High"){
+        if(temp == "Cold"){
+            go = "It might be people there, but go! The dome is nice.";
+        }
+        else{
+            go = "No! Don't go!";
+        }
     }
     console.log(go);
+    console.log(co);
     console.log(temp);
 
 }
