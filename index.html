@@ -12,6 +12,7 @@
     <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
     <script src="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.js"></script>
     <script src="visualize.js"></script>
+    <script src="node_modules/chart.js/dist/Chart.js"></script>
     <!-- This script, cordova.js,  is built into Evothings Viewer (i.e. you won't need to add this file to your project) The idea is to pick up a http resource, even if you're using https, which would normally create a cross-protocol violation. The HTTP plug-in from Apache Cordova allows this to be carried out, see especially this post: https://evothings.com/evothings-secured-now-serving-over-https/ -->
     <script>
     // Redirect console.log to Evothings Workbench, so you can see data under 'Tools'
@@ -26,6 +27,8 @@
 
 <button onClick="getJSON();">Retrieve some sensor data</button>
 <div id="printHere"></div>
+<canvas id="myChart" width="400" height="400"></canvas>
+
 
 
 </body>

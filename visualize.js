@@ -14,7 +14,7 @@ var go = "";
 // Function to retrieve data, placing it in a "response" object
 function getJSON() {
     $.ajax({
-            url: mSensorDataURL + sensor.key + ".json?gt[timestamp]=now- 1day",
+            url: mSensorDataURL + sensor.key + ".json?gt[timestamp]=now- 2day",
             jsonp: "callback",
             cache: true,
             dataType: "jsonp",
@@ -27,8 +27,10 @@ function getJSON() {
                         sensor.data = response[0];
                         sensor.fullData = response;
                         console.log(response)
-                         shallIGo();
+                        shallIGo();
                         printData();
+                        minimize(response);
+                       
                     }
                 }
         });
@@ -39,12 +41,7 @@ function printData(){
         html = '<h1>Sensor Data</h1>'
         + '<br /><div id="time">Time  ' + sensor.data.timestamp + '</div>'
         + '<div id="hum"><img src="images/humidity.png" width="40px" height="40px">'+ sensor.data.h + ' % (rel)</div>'
-        + '<div id="temp">'
-            +'<div id="tempbar">'
-                +'<svg>'
-                    +'<rect width="'+sensor.data.t+'" height="30" style="fill:rgb(0,0,255);stroke-width:3;stroke:rgb(0,0,0)"/>'
-                +'</svg>'
-                +sensor.data.t
+        +'<p>Temperature ' + sensor.data.t + '</p>'
         +'<p>'+ go +'</p>'
     } 
     else{
@@ -97,5 +94,56 @@ function shallIGo(){
     console.log(temp);
 
 }
+
+function minimize(response){
+var co2response1 = [];
+var co2response2 = [];
+for (i = 0; i < 2000; i++) {
+    co2response1.push(response[i].c);
+    
+};
+for (i = 2001; i < response.length; i++){
+    co2response2.push(response[i].c)
+}
+co2chart(co2response1, co2response2);
+
+}
+
+function co2chart(co2response1, co2response2){
+    var ctx = document.getElementById("myChart");
+    var myChart = new Chart(ctx, {
+    type: 'line',
+    data: {
+        labels: ["08:00","08:30","09:00", "09:30","10:00","10:30","11:00","11:30", "12:00","12:30", "13:00","13:30" ,"14:00", "14:30", "15:00","15:30"],
+        datasets: [{
+            label: 'CO2',
+            data: co2response1,
+            fill: false,
+            backgroundColor: "rgba(75,192,192,0.4)",
+            borderColor: "rgba(75,192,192,1)",
+
+        },
+        {
+            label: 'Yeasterday',
+            data: co2response2,
+            fill: false,
+            backgroundColor: "rgba(255,99,132,0.4)",
+            borderColor: "rgba(255,99,132,1)"
+
+        }]
+    },
+    options: {
+        scales: {
+            yAxes: [{
+                ticks: {
+                    beginAtZero:false
+                }
+            }]
+        }
+    }
+});
+}
+
+
 
 
