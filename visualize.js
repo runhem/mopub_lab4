@@ -9,7 +9,7 @@ sensor.key = "BQa4EqqbgxfMgpBQ8XwNhvP82Dj";
 
 // A bitmap image describing where the sensor is located
 sensor.image = "https://evothings.com/demos/dome_pics/IMG_1758.JPG";
-
+var go = "";
 
 // Function to retrieve data, placing it in a "response" object
 function getJSON() {
@@ -26,21 +26,26 @@ function getJSON() {
                     if (response && response[0]) {
                         sensor.data = response[0];
                         sensor.fullData = response;
+                        console.log(response)
+                         shallIGo();
                         printData();
-                        shallIGo();
                     }
                 }
         });
     }
-
 function printData(){
     if (sensor && sensor.data) {
     // Display the info.
         html = '<h1>Sensor Data</h1>'
         + '<br /><div id="time">Time  ' + sensor.data.timestamp + '</div>'
-        + '<div id="hum">Humidity ' + sensor.data.h + ' % (rel)</div>'
-        + '<div id="temp">Temperature ' + sensor.data.t + ' celcius</div>'
-        + '<p>' + sensor.data.c + '</p>'
+        + '<div id="hum"><img src="images/humidity.png" width="40px" height="40px">'+ sensor.data.h + ' % (rel)</div>'
+        + '<div id="temp">'
+            +'<div id="tempbar">'
+                +'<svg>'
+                    +'<rect width="'+sensor.data.t+'" height="30" style="fill:rgb(0,0,255);stroke-width:3;stroke:rgb(0,0,0)"/>'
+                +'</svg>'
+                +sensor.data.t
+        +'<p>'+ go +'</p>'
     } 
     else{
         html = '<h1>Sensor Data</h1>'
@@ -48,7 +53,6 @@ function printData(){
     }
     document.getElementById("printHere").innerHTML= html;
 }
-
 
 function shallIGo(){
     var co = "Medium";
@@ -68,7 +72,7 @@ function shallIGo(){
         }
     }
 
-    var go = "";
+
     if(co == "Low" || co == "Medium"){
         if(temp == "Cold"){
         go = "Yes! You should definetily go.";
