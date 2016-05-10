@@ -42,6 +42,7 @@ function printData(){
         + '<br /><div id="time">Time  ' + sensor.data.timestamp + '</div>'
         + '<div id="hum"><img src="images/humidity.png" width="40px" height="40px">'+ sensor.data.h + ' % (rel)</div>'
         +'<p>Temperature ' + sensor.data.t + '</p>'
+        + '<span class="thermometer">'+sensor.data.t+'&' + 'deg;C' +'</span>'
         +'<p>'+ go +'</p>'
     } 
     else{
