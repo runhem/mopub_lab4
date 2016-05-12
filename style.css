@@ -1,15 +1,161 @@
 html{
-    
     height:100%;
     width:100%;
-        background:-webkit-radial-gradient(circle, #fcee92 0%, #ebcf12 100%);
-            z-index: -1;
+ /*   background:-webkit-radial-gradient(circle, #fcee92 0%, #ebcf12 100%);
+    z-index: -1; */
+}
 
+@font-face{
+    font-family: sansfont;
+    src: url(lucida-grande.ttf);
+}
+
+/* LAYOUT */
+html, body, #background{
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  font-family: sansfont;
+  color:white;
+  text-shadow: none;  
+}
+
+#background{
+    min-height: 600px;
+    max-height: 600px;
+    background-image: url(images/the_dome_blur.png);
+    background-size: cover;
+    background-position: -200px;
+    background-attachment: fixed;
+    padding:0px;
+    overflow: hidden;
+    scroll:disabled;
+}
+
+html, body, article, .glass::before {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+article{
+  -webkit-box-shadow: inset 1px 1px 10px 3px rgba(255, 255, 255, 0.5);
+    -moz-box-shadow: inset 1px 1px 10px 3px rgba(255, 255, 255, 0.5);
+    box-shadow: inset 1px 1px 10px 3px rgba(255, 255, 255, 0.5);
+    border:solid 1px #979797;
+    border-radius: 5px;
+    background-color: transparent;
+    overflow: scroll;
+}
+
+.glass{
+  position: fixed;
+  top:10%;
+}
+
+.glass::before {
+  z-index: -1;
+  display: block;
+  position: absolute;
+  content: ' ';
+}
+
+.glass::before {
+  background-size: cover;
+  opacity: 0.4;
+}
+
+.glass{
+  background-color: rgba(180, 180, 180, 0.3)
+}
+
+#glass-header{
+  margin-top:0px;
+}
+
+/* TRANSFORMATIONS */
+.glass.down {
+  /* Fallback for browsers that don't support 3D Transforms */
+  transform: translateY(81%);
+  transform: translateY(81%) translateZ(0);
+}
+
+.glass.down::before {
+  transform: translateY(-81%);
+  transform: translateY(-81%) translateZ(0);
+}
+
+.glass.up, .glass.up::before {
+  transform: translateY(0);
+  transform: translateY(0) translateZ(0);
 }
 
 
+.glass, .glass::before {
+  transition: transform 0.5s ease-out;
+}
 
- .thermometer {
+
+.myh1{
+    width:100%;
+    font-size:2em;
+    line-height: 1.4;
+    text-align: center;
+    border-bottom: 2px solid rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    margin-top:10px;
+}
+
+.myh1 span{
+  text-align: center;
+}
+
+p{
+  font-size: 1.8rem;
+  line-height: 1.4;
+  max-width: 30em;
+  margin: 1.4em auto;
+  padding: 0 1em;
+}
+
+.myh2{
+    font-size: 15px;
+}
+
+#start{
+    text-align: center;
+    margin-top:50%;
+    position:relative;
+}
+
+#start > p{
+    width:45%;
+    font-size: 20px;
+    margin:auto;
+}
+
+#start button{
+    -webkit-box-shadow: inset 1px 1px 10px 3px rgba(255, 255, 255, 0.5);
+    -moz-box-shadow: inset 1px 1px 10px 3px rgba(255, 255, 255, 0.5);
+    box-shadow: inset 1px 1px 10px 3px rgba(255, 255, 255, 0.5);
+    border:solid 1px #979797;
+    background-color: transparent;
+    font-family: sansfont;
+    font-size:20px;
+    color:white;    
+    width:50%;
+    text-shadow: none;
+    margin-left:auto;
+    margin-right:auto;
+}
+
+#shouldIGo p{
+    text-align: center;
+    font-size: 65px;
+    margin: 0px;
+}
+
+.thermometer {
     width:15px;
     height:80px;
     left:5px;
@@ -42,3 +188,20 @@ html{
     border:5px solid #4a1c03;
     box-shadow:inset 0 0 0 4px #fff;
 }
+
+.contentdiv{
+  height: 90px;
+  border-top: 1px solid #d6d6d6;
+  padding-left:10px;
+}
+
+.text{
+    text-align: center;
+    font-size: 12px; 
+}
+
+.number{
+    font-size:22px;
+    text-align: center;
+}
+

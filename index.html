@@ -7,11 +7,13 @@
     <meta name="viewport" content="width=device-width, user-scalable=no,
         shrink-to-fit=no, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0" />
 
-    <title>Getting some data from a json API</title>
+    <title>Shake that dome</title>
     <link rel="stylesheet" href="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.css" />
     <link rel="stylesheet" href="style.css">
     <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
     <script src="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+
     <script src="visualize.js"></script>
     <script src="node_modules/chart.js/dist/Chart.js"></script>
     <!-- This script, cordova.js,  is built into Evothings Viewer (i.e. you won't need to add this file to your project) The idea is to pick up a http resource, even if you're using https, which would normally create a cross-protocol violation. The HTTP plug-in from Apache Cordova allows this to be carried out, see especially this post: https://evothings.com/evothings-secured-now-serving-over-https/ -->
@@ -24,14 +26,39 @@
  
 
 <body>
-<button onclick="history.back()">Exit</button><br />
 
-<button onClick="getJSON();">Retrieve some sensor data</button>
-<div id="printHere"></div>
-<canvas id="myChart" width="400" height="400"></canvas>
+<!--<div class="col-xs-12" id="header">
+    <h1>SHAKE THAT DOME</h1>
+</div>-->
 
+<div class="container" id="background">
+<!-- <button onclick="history.back()">Exit</button><br/> -->
+<div class="col-xs-12" id="start">
+<p id="should">Should I go to the dome?</p>
+<button id="goBtn" onClick="getSensor();">Find out!</button>
+</div>
 
+<div id="shouldIGo"></div>
+<article id="glass" class="glass down" style="display:none;">
 
+<div class="col-xs-12 slideUp" onclick="slideUp()" style="text-align:center; height:8%"><i class="myicon glyphicon glyphicon-triangle-top" style="font-size: 20px;"></i></div>
 
+<div class="col-xs-12 myh1" id="glass-header">Today</div>
+<div class="col-xs-12" id="printHere"></div>
+<!--<canvas id="myChart" width="400" height="400"></canvas>-->
+</article>
+
+</div>
 </body>
 </html>
+
+
+
+
+
+
+
+
+
+
+
