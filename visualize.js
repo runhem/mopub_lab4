@@ -112,11 +112,11 @@ function minimize(response){
     co2label = [];
     half = Math.round(response.length/2)
     console.log(half, response);
-for (i = 0; i < half; i+=20) {
+for (i = 0; i < half; i+=50) {
     co2response1.push(response[i].c);
-    co2label.push(i);
+    co2label.push(response[i].timestamp.substring(11, 16));
 };
-for (i = half; i < response.length; i+=20){
+for (i = half; i < response.length; i+=50){
     co2response2.push(response[i].c)
 }
 }
@@ -130,15 +130,17 @@ function co2chart(co2response1, co2response2){
         labels: co2label,
         datasets: [{
             label: 'CO2',
-            data: co2response1,
             fill: false,
             borderColor: "rgba(75,192,192,1)",
+            pointRadius:0,
+            data: co2response1
         },
         {
             label: 'Yesterday',
-            data: co2response2,
             fill: false,
             borderColor: "rgba(255,99,132,1)",
+            pointRadius:0,
+            data: co2response2
         }]
     },
     options: {
@@ -181,10 +183,10 @@ function getChart(response){
     allh = [];
     allav = [];
     lab = [];
-    for(i=0; i<response.length; i+=40){
+    for(i=0; i<response.length; i+=100){
         allh.push(Number(response[i].h));
         allav.push(sensor.haverage);
-        lab.push(i);
+        lab.push(response[i].timestamp.substring(11, 16));
     };
 }
 
@@ -198,12 +200,14 @@ function chartAver(allh, allav, lab){
                 label: 'Medelvärde',
                 fill: false,
                 borderColor: "rgba(75,192,192,1)",
+                pointRadius:0,
                 data:allav,
             },
             {
                 label: 'Alla',
                 fill: false,
                 borderColor: "rgba(255,99,132,1)",
+                pointRadius:0,
                 data:allh,
             }]
         },
@@ -242,10 +246,13 @@ function week(){
             '<div class="col-xs-12 contentdiv" id="carbon">'+
             '<span class="myh2">Carbon</span>'+
             '<canvas id="myChart" width="250" height="150"></canvas>'+
+            '</div>'+
 
             '<div class="col-xs-12 contentdiv" id="av">'+
             '<span class="myh2">Humidity</span>'+
-            '<canvas id="avChart" width="250" height="150"></canvas>'
+            '<canvas id="avChart" width="250" height="150"></canvas>'+
+            '</div>'+
+            '</div>'
 
 //        + '<span class="thermometer">'+sensor.data.t+'&' + 'deg;C' +'</span>'
     } 

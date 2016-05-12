@@ -193,6 +193,7 @@ p{
   height: 90px;
   border-top: 1px solid #d6d6d6;
   padding-left:10px;
+  margin-bottom: 10px;
 }
 
 .text{
@@ -205,3 +206,14 @@ p{
     text-align: center;
 }
 
+#myChart, #avChart{
+  background-color: white;
+  opacity: 0.8;
+  border-radius: 5px;
+  width: 300px;
+  color: black;
+}
+
+#av{
+  margin-top: 100px;
+}
